@@ -15,15 +15,30 @@ db.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
         //list.push(nameArticle)
     }
     
-    async function getArticles() {
-        const articles = await article.find()
+    async function getArticles(filtered) {
+        let filter = {}
+        if(filtered !== null){
+            filter = {nameArticle: filtered}
+        }
+        const articles = await article.find(filter)
         return articles
     }
     
+    async function updateArticle(id,nameArticle){
+        console.log(nameArticle)
+        const foundArticle = await article.findOne({id})
+        foundArticle.nameArticle = nameArticle
+        const newArticle = await foundArticle.save()
+        return newArticle
+    }
+
+    function removeArticle(id) {
+        return article.deleteOne({id})
+    }
+
     module.exports = {
         add: addArticle,
         get: getArticles,
-        //get
-        //update
-        //delete
+        update: updateArticle,
+        remove: removeArticle
     }
