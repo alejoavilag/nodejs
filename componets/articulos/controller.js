@@ -1,4 +1,5 @@
 const store = require('./store')
+
 function getArticle () {
     return new Promise ((resolve, reject) =>{
         resolve(store.list())
