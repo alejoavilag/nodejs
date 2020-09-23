@@ -12,7 +12,7 @@ db.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
     function addArticle(nameArticle) {
         const myArticle = new article(nameArticle)
         myArticle.save()
-        list.push(nameArticle)
+        //list.push(nameArticle)
     }
     
     async function getArticles() {
@@ -22,7 +22,7 @@ db.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
     
     module.exports = {
         add: addArticle,
-        list: getArticles,
+        get: getArticles,
         //get
         //update
         //delete

@@ -2,7 +2,7 @@ const store = require('./store')
 
 function getArticle () {
     return new Promise ((resolve, reject) =>{
-        resolve(store.list())
+        resolve(store.get())
     })
 }
 function addArticle (user, nameArticle) {
@@ -19,6 +19,7 @@ function addArticle (user, nameArticle) {
         }
         store.add(fullArticle)
         resolve(fullArticle)
+        console.log(fullArticle)
     })
 }
 
